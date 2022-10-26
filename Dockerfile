@@ -8,4 +8,5 @@ RUN apt-get update && apt-get install -y \
 	curl wget \
         jq \
 	npm \
-        nfs-common
+        nfs-common \
+        rsync
