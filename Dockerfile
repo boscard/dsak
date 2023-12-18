@@ -1,12 +1,20 @@
-FROM httpd:2.4
+FROM debian:12-slim
 
 LABEL maintainer="Dawid Trzebiatowski"
 
-RUN apt-get update && apt-get install -y \
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update && apt install -y \
+	curl \
+	dnsutils \
+	iputils-ping \
 	mariadb-client \
-	dnsutils iputils-ping net-tools \
-	curl wget \
-        jq \
+	net-tools \
 	npm \
-        nfs-common \
-        rsync
+	tcpdump \
+	wget \
+  jq \
+  nfs-common \
+  rsync \
+	&& rm -rf /var/lib/apt/lists/*
+
+ENTRYPOINT ["sleep", "infinity"]
